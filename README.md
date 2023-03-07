@@ -29,9 +29,9 @@ Not a fan of bits of the stack? Fork it, change it, and use `npx create-remix --
 
 - This step only applies if you've opted out of having the CLI install dependencies for you:
 
-   ```sh
-   npx remix init
-   ```
+  ```sh
+  npx remix init
+  ```
 
 - Validate the app has been set up properly (optional):
 
@@ -76,10 +76,10 @@ Prior to your first deployment, you'll need to do a few things:
 - Along with your AWS credentials, you'll also need to give your CloudFormation a `SESSION_SECRET` variable of its own for both staging and production environments, as well as an `ARC_APP_SECRET` for Arc itself.
 
   ```sh
-  npx arc env --add --env staging ARC_APP_SECRET $(openssl rand -hex 32)
-  npx arc env --add --env staging SESSION_SECRET $(openssl rand -hex 32)
-  npx arc env --add --env production ARC_APP_SECRET $(openssl rand -hex 32)
-  npx arc env --add --env production SESSION_SECRET $(openssl rand -hex 32)
+  npx arc env --add -e staging ARC_APP_SECRET $(openssl rand -hex 32)
+  npx arc env --add -e staging SESSION_SECRET $(openssl rand -hex 32)
+  npx arc env --add -e production ARC_APP_SECRET $(openssl rand -hex 32)
+  npx arc env --add -e production SESSION_SECRET $(openssl rand -hex 32)
   ```
 
   If you don't have openssl installed, you can also use [1password](https://1password.com/password-generator) to generate a random secret, just replace `$(openssl rand -hex 32)` with the generated secret.
@@ -88,7 +88,7 @@ Prior to your first deployment, you'll need to do a few things:
 
 You can find the CloudFormation template that Architect generated for you in the sam.yaml file.
 
-To find it on AWS, you can search for [CloudFormation](https://console.aws.amazon.com/cloudformation/home) (make sure you're looking at the correct region!) and find the name of your stack (the name is a PascalCased version of what you have in `app.arc`, so by default it's RemixGrungeStackStaging and RemixGrungeStackProduction) that matches what's in `app.arc`, you can find all of your app's resources under the "Resources" tab.
+To find it on AWS, you can search for [CloudFormation](https://console.aws.amazon.com/cloudformation/home) (make sure you're looking at the correct region!) and find the name of your stack (the name is a PascalCased version of what you have in `app.arc`, so by default it's RemixGrungeStackAwsTest7b33Staging and RemixGrungeStackAwsTest7b33Production) that matches what's in `app.arc`, you can find all of your app's resources under the "Resources" tab.
 
 ## GitHub Actions
 
